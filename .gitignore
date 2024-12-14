@@ -1,0 +1,5 @@
+*.swo
+*.swp
+*.pyc
+.env_all
+nohup.out

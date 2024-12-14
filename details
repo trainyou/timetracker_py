@@ -1,0 +1,137 @@
+everest
+cv27.one@gmail.com
+lookup1.ok
+
+
+ramco
+login1@all
+kittu9.nine@gmail.com
+
+
+
+
+
+
+You can do one more thing while you’re at it, which is to make sure the Django secret key used for cryptographic signing isn’t hard-coded in settings.py, which Git will likely track. Remove the following line from project/settings.py:
+
+SECRET_KEY = "django-insecure-o6w@a46mx..."  # Remove this line
+Replace it with the following:
+
+import os
+
+# ...
+
+try:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
+    
+    
+This tells Django to look in your environment for SECRET_KEY rather than including it in your application source code.
+
+Note: For larger projects, check out django-environ to configure your Django application with environment variables.
+
+Finally, set the key in your environment. Here’s how you could do that on Ubuntu Linux using OpenSSL to set the key to an eighty-character string:
+
+
+$ echo "export SECRET_KEY='$(openssl rand -hex 40)'"> .DJANGO_SECRET_KEY
+$ source .DJANGO_SECRET_KEY
+You can cat the contents of .DJANGO_SECRET_KEY to see that openssl has generated a cryptographically secure hex string key:
+
+$ cat .DJANGO_SECRET_KEY
+export SECRET_KEY='26a2d2ccaf9ef850...'
+Alright, you’re all set. That’s all you need to have a minimally functioning Django app.
+
+
+
+
+---------------------------------
+to convert 'isoformat' date or time 
+
+
+from datetime import date, time, datetime
+
+ - time.fromisoformat(isoformat string)
+----------------------------------
+- To delete sqlite3 rows,
+
+DELETE FROM input_daily_records WHERE id=3;
+-------------------------------------------
+suser:
+
+ansible
+cv27.one@gmail.com
+tracker123
+
+user:
+
+kittu_0
+user@1kittu
+cv27.one@gmail.com
+
+
+
+queries: 
+
+How to move files to static folder from static files
+
+the files in the static_root is not serving static files while done by staticfiles_dirs?
+
+buttons should be of 'type' submit as type='submit' otherwise no action is implemented
+
+reverse(track_page) will generate the exact url '/track_page' which calls 'track_page' function.
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    # Define URL pattern for the login view
+    path('login/', views.login, name='login'),
+    
+    # Define URL pattern for the track page view
+    path('track_page/', views.track_page, name='track_page'),
+]
+
+the above is for addressing the name conflict when using the 'reverese' function in the redirect django
+
+------
+BEST METHOD TO RUN:
+
+firstly change the models.py by adding a method:
+
+class Daily_Records(models.Model):
+    l_date = models.DateField(auto_now_add= True)
+    login_time = models.TimeField(null=True, blank=True)
+    logout_time = models.TimeField(null=True, blank=True)
+    assignments = models.CharField(max_length = 200, null=True)
+    
+    @staticmethod
+    def delete_all():
+        Daily_Records.objects.all().delete()
+        
+--------------
+
+then externally in the database execute the command 
+
+- UPDATE sqlite_sequence SET seq = 0 WHERE sqlite_sequence.name = "table_name";
+
+
+
+
+ALTERNATE METHOD: 
+- drop table <table_name>;
+
+If there is any deletion of the table externally from database terminal;
+
+follow the below
+
+delete all migrations
+
+in db, 
+
+- delete from django_migrations where app='appname';
+
+- python manage.py makemigrations appname
+
+- python manage.py migrate

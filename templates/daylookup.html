@@ -1,0 +1,49 @@
+{% load static %}
+<html>
+    <head>
+        <title>Calendar</title>
+        <link rel="stylesheet" href= '{% static "css/look_styles.css" %}'>
+        <script src='{% static "/js/page_functions.js" %}'></script>
+    </head>
+    <body>
+        <h1>Calendar and Assignments</h1>
+            <form action="{% url 'lookup' %}" method="POST">
+                {% csrf_token %}
+                <table style="width:70%; float:left;">    
+                    <thead>      
+                        <tr>
+                            <th>Date and Login time</th><th>Login Hours(hrs)</th><th>Assignments</th><th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        {% if d %}                                                               
+                        <tr>
+                            <td>{{d.l_date}} {{d.login_time}}</td>
+                            <td>{{d.login_hours}}</td>
+                            <td>
+                                <textarea id='text' name='text'>{{d.assignments}}</textarea>
+                                <input id='savebtn' name="savebtn" type="submit" value="save">                       
+                            </td>
+                            <td>
+                                <input name='loginb' type="submit" value="Login">
+                                <input name='breaks' type="submit" value="breakin">
+                                <input name='breake' type="submit" value="production">
+                                <input name='logoutb' type="submit" value="Logout">
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if r %}
+                        {% for m in r %}
+                        <tr>
+                            <td>{{m.l_date}}</td><td>{{m.login_hours}}</td><td>{{m.assignments}}</td><td>{{m.init_login}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}        
+
+                    </tbody>
+                </table>
+                <label for="break_status" style="margin-left:10px; text-align: right;" {% if d.b %}hidden{% endif %}>On Break</label>
+            </form>
+    </body>
+</html>

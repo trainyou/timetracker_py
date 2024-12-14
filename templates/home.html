@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+<head>
+    <title>Login Tracker</title>
+</head>
+<body>
+    <h1>Login tracker</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="fname">Username:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+</body>
+</html>
