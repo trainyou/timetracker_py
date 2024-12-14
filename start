@@ -2,9 +2,9 @@
 
 # creating all the environment variables in a file
 cat >.env_all<<EOF
-export SECRET_KEY='$(openssl rand -hex 40)'
-export LOOKUP_HOME=$(pwd)
-export VIRTENV_LOC='~/.virtenv/'
+export SECRET_KEY="$(openssl rand -hex 40)"
+export PROJECT_HOME="$(pwd)"
+export VIRTENV_LOC="$HOME/.virtenv/"
 export VIRTENV_ACT_LOC="${VIRTENV_LOC}/bin/activate"
 EOF
 
@@ -25,5 +25,5 @@ then
         python -m virtualenv ${VIRTENV_LOC}
 fi
 
-pip install -r ${LOOKUP_HOME}/requirements
-nohup python ${LOOKUP_HOME}/manage.py runserver 0.0.0.0:8000 &
+pip install -r ${PROJECT_HOME}/requirements
+nohup python ${PROJECT_HOME}/manage.py runserver 0.0.0.0:8000 &
