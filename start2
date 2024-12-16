@@ -4,8 +4,9 @@
 cat >custom_env.sh<<EOF
 export PROJECT_HOME="$(pwd)"
 export SECRET_KEY="$(openssl rand -hex 40)"
-export VIRTENV_HOME="$HOME/.virtenv"
-export VIRTENV_ACT="${VIRTENV_HOME}/bin/activate"
+export VIRTENV_HOME="$HOME/.virtenv"  #error: VIRTENV_HOME not exported so can't give value to below variables
+#export VIRTENV_ACT="$VIRTENV_HOME/bin/activate"
+export VIRTENV_ACT="$HOME/.virtenv/bin/activate"
 EOF
 
 # copy file to /etc/profile.d and source the above file

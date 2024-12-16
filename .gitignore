@@ -3,3 +3,4 @@
 *.pyc
 .env_all
 nohup.out
+custom_env.sh
