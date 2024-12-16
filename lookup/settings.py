@@ -29,7 +29,11 @@ except KeyError as e:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://d1f2d924-27e0-4503-978b-c73e418a5277-10-244-3-82-8000.papa.r.killercoda.com'
+]
 
 
 # Application definition

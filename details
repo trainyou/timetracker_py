@@ -1,7 +1,10 @@
-everest
-cv27.one@gmail.com
-lookup1.ok
+super user:
 
+ansible
+cv27.one@gmail.com
+tracker123
+
+user:
 
 ramco
 login1@all
@@ -57,17 +60,13 @@ from datetime import date, time, datetime
 
 DELETE FROM input_daily_records WHERE id=3;
 -------------------------------------------
-suser:
 
-ansible
-cv27.one@gmail.com
-tracker123
 
-user:
 
-kittu_0
-user@1kittu
-cv27.one@gmail.com
+
+
+
+
 
 
 
